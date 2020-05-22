@@ -1,11 +1,19 @@
-import { useMemo, useContext } from 'react'
-import { pipe, get, omit, flattenDepth, unionBy } from 'lodash/fp'
-import { ulid } from 'ulid'
-import match from 'match-sorter'
 import sort from 'array-sort'
-
+import {
+  flattenDepth,
+  get,
+  keyBy,
+  merge,
+  omit,
+  pipe,
+  unionBy,
+  values,
+} from 'lodash/fp'
+import match from 'match-sorter'
+import { useContext, useMemo } from 'react'
+import { ulid } from 'ulid'
+import { doczState, Entry, MenuItem } from '../state'
 import { compare, flatArrFromObject } from '../utils/helpers'
-import { Entry, MenuItem, doczState } from '../state'
 
 const noMenu = (entry: Entry) => !entry.menu
 const fromMenu = (menu: string) => (entry: Entry) => entry.menu === menu
@@ -23,7 +31,7 @@ type Menus = MenuItem[]
 const menusFromEntries = (entries: Entry[]) => {
   const entriesWithoutMenu = entries.filter(noMenu)
   const menus = flatArrFromObject(entries, 'menu').map(parseMenu(entries))
-  return unionBy('name', menus, entriesWithoutMenu as any)
+  return values(merge(keyBy('name', entriesWithoutMenu), keyBy('name', menus)))
 }
 
 const parseItemStr = (item: MenuItem | string) =>
