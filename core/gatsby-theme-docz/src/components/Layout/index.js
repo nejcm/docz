@@ -1,12 +1,11 @@
 /** @jsx jsx */
-import { useRef, useState } from 'react'
-import { jsx, Layout as BaseLayout, Main } from 'theme-ui'
 import { Global } from '@emotion/core'
-
+import { useRef, useState } from 'react'
+import { Box, Flex, jsx } from 'theme-ui'
 import global from '~theme/global'
 import { Header } from '../Header'
-import { Sidebar } from '../Sidebar'
 import { MainContainer } from '../MainContainer'
+import { Sidebar } from '../Sidebar'
 import * as styles from './styles'
 
 export const Layout = ({ children }) => {
@@ -14,9 +13,9 @@ export const Layout = ({ children }) => {
   const nav = useRef()
 
   return (
-    <BaseLayout sx={{ '& > div': { flex: '1 1 auto' } }} data-testid="layout">
+    <Flex sx={{ '& > div': { flex: '1 1 auto' } }} data-testid="layout">
       <Global styles={global} />
-      <Main sx={styles.main}>
+      <Box sx={styles.main}>
         <Header onOpen={() => setOpen(s => !s)} />
         <div sx={styles.wrapper}>
           <Sidebar
@@ -28,7 +27,7 @@ export const Layout = ({ children }) => {
           />
           <MainContainer data-testid="main-container">{children}</MainContainer>
         </div>
-      </Main>
-    </BaseLayout>
+      </Box>
+    </Flex>
   )
 }

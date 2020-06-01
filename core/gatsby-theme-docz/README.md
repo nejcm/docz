@@ -128,7 +128,7 @@ export default ({ children }) => (
 
 ## Theme UI integrated
 
-As default theme system we are using the [Theme-UI](https://theme-ui.com/), it's a library for build consistent, themeable React apps based on constraint-based design principles.
+As default theme system we are using the [Theme-UI v0.3.1](https://theme-ui.com/), it's a library for build consistent, themeable React apps based on constraint-based design principles.
 
 You can modify our based theme creating your own style, combining these modifications with the component shadowing and creating a totally different documentation.
 

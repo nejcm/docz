@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { theme, useConfig, ComponentsProvider } from 'docz'
-import { Styled, ThemeProvider } from 'theme-ui'
-
-import defaultTheme from '~theme'
+import { ComponentsProvider, theme, useConfig } from 'docz'
+import { jsx, Styled, ThemeProvider } from 'theme-ui'
 import components from '~components'
+import defaultTheme from '~theme'
+
 
 const Theme = ({ children }) => {
   const config = useConfig()

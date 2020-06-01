@@ -1,7 +1,6 @@
-import moraga from 'typography-theme-moraga'
 import { toTheme } from '@theme-ui/typography'
 import { merge } from 'lodash/fp'
-
+import moraga from 'typography-theme-moraga'
 import * as modes from './modes'
 import prism from './prism'
 import styles from './styles'
@@ -10,7 +9,7 @@ moraga.headerWeight = 700
 const typography = toTheme(moraga)
 
 export default merge(typography, {
-  initialColorMode: 'light',
+  initialColorModeName: 'light',
   // Show errors above playground editor
   showLiveError: true,
   // Show preview of the code inside playground
